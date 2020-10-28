@@ -91,6 +91,8 @@ public:
     // 二分搜索树的层序遍历
     void levelOrder(){
 
+        if (root == NULL) return;
+        
         queue<Node*> q;
         q.push(root);
         while( !q.empty() ){
@@ -472,7 +474,7 @@ private:
             assert(key < node->key);
             // 如果当前节点大于key, 则当前节点有可能是比key大的最小值
             // 向左继续搜索, 将结果存储到tempNode中
-            Node* tempNode = predecessorFromAncestor(node->left, key);
+            Node* tempNode = successorFromAncestor(node->left, key);
             if(tempNode)
                 return tempNode;
             else
